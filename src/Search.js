@@ -53,7 +53,7 @@ const Home = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `https://www.googleapis.com/customsearch/v1?key=AIzaSyBYgiNnTTpufnuiT5S6xGVkLfK_h56b3PQ&cx=12526291779674938&q=${searchTerm}&start=${startIndex}`
+        `https://www.googleapis.com/customsearch/v1?key=AIzaSyDtxvlPgt21PU4h5b8ssVJNu3mshcvFdfA&cx=12526291779674938&q=${searchTerm}&start=${startIndex}`
       );
 
       const data = response.data;
