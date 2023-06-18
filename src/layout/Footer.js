@@ -6,6 +6,15 @@ const Footer = () => {
   return (
     <footer>
       <div className="container">
+        <div className="ht">
+          <a href="/">
+            <p>
+              <span>?</span>
+            </p>
+            <p>Hỗ trợ</p>
+          </a>
+          <a href="tel:02473012468">024-7301-2468</a>
+        </div>
         <p>© 2023 BookingCare.</p>
         <div className="item">
           <div className="icon">

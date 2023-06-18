@@ -5,33 +5,15 @@
   display: flex;
   .form {
     margin: 8rem 0 3%;
-    width: 60%;
     max-width: 90rem;
+    display: flex;
+    justify-content: center;
 
-    @include screen_xxl {
-    }
-
-    @include screen_md {
-      width: 85%;
-    }
-    @include screen_sm {
-      width: 100%;
-      margin: 7rem 0 3%;
-    }
-    @include screen_xs {
-      margin: 9rem 0 3%;
-    }
-
-    .title {
-      display: flex;
-      justify-content: center;
-      h1 {
-        font-weight: 600;
-        font-size: 3rem;
-        color: #072144;
-      }
-    }
     .searchInput {
+      top: 0;
+      width: 50%;
+      max-width: 80rem;
+      position: fixed;
       margin: 1rem;
       border-radius: 25px;
       background: #f7d800;
@@ -54,17 +36,22 @@
         width: 100%;
         margin-right: 1rem;
       }
+      @include screen_sm {
+        right: 0;
+        width: 60%;
+      }
     }
     .wrap {
       background-color: #fff;
       border-radius: 0.5rem;
+      margin-bottom: 8rem;
       display: none;
       width: 100%;
-      margin-top: 1rem;
-      border: 1px solid rgb(206, 205, 205);
-      max-height: 60vh;
-      overflow-y: scroll;
-      z-index: 999;
+      border-top: 1px solid rgb(206, 205, 205);
+      border-bottom: 1px solid rgb(206, 205, 205);
+      // max-height: 60vh;
+      // overflow-y: scroll;
+      // z-index: 999;
       @include screen_sm {
         border-radius: 0;
       }
@@ -80,7 +67,9 @@
             object-fit: cover;
             width: 15%;
             height: auto;
-            /* height: 50px; */
+            @include screen_sm {
+              width: 19%;
+            }
           }
           .content {
             display: flex;
@@ -110,9 +99,24 @@
       }
     }
     .errorMessage {
-      font-size: 1.6rem;
+      background: #fff;
+      height: 100%;
+      max-width: 95rem;
       color: rgb(176, 1, 1);
       padding: 0.5rem 2rem;
+      position: fixed;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      :first-child {
+        .iconErr {
+          font-size: 4rem;
+          color: #e5c600;
+        }
+      }
+      :last-child {
+        font-size: 2rem;
+      }
     }
   }
 }
@@ -122,6 +126,7 @@
 }
 
 header {
+  height: 7rem;
   position: fixed;
   top: 0;
   width: 100vw;
@@ -142,14 +147,12 @@ header {
       display: flex;
       align-items: center;
       gap: 0.2rem;
-
-      @include screen_xs {
-        flex-direction: column;
-        align-items: start;
-      }
       .iconList {
         font-size: 2.5rem;
         color: gray;
+        @include screen_sm {
+          display: none;
+        }
       }
 
       img {
@@ -161,6 +164,9 @@ header {
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
+      @include screen_sm {
+        display: none;
+      }
 
       :first-child {
         display: flex;
@@ -193,18 +199,17 @@ header {
 }
 
 footer {
-  z-index: -1;
+  margin: 0;
   position: fixed;
   bottom: 0;
   width: 100vw;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
   background: #64b9e5;
   color: #fff;
-  padding: 1.3rem;
+  padding: 1rem;
   justify-content: center;
   display: flex;
   .container {
-    padding: 1rem;
     margin: 0 2rem;
     display: flex;
     justify-content: space-between;
@@ -213,25 +218,62 @@ footer {
       margin: 0;
     }
     p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
+    .ht {
+      justify-content: center;
+      display: none;
+      flex-direction: column;
+      gap: 0.3rem;
+      @include screen_sm {
+        display: flex;
+      }
+
+      :first-child {
+        display: flex;
+        justify-content: left;
+        :first-child {
+          background: #fff;
+          width: 1.3rem;
+          height: 1.3rem;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 800;
+          color: #45c3d2;
+          font-size: 1rem;
+        }
+        p {
+          color: #fff;
+          font-weight: 500;
+          font-size: 1rem;
+        }
+      }
+      :last-child {
+        color: #fff;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+    }
+
     .item {
       display: flex;
       gap: 1rem;
       .icon {
         background-color: #fff;
-        width: 3.2rem;
+        width: 3.1rem;
         display: flex;
         height: 3.1rem;
         align-items: center;
         border-radius: 5px;
         .iconfb {
           color: rgb(60, 87, 158);
-          font-size: 5rem;
+          font-size: 4.5rem;
         }
         .iconyt {
           color: rgb(204, 25, 30);
-          font-size: 5rem;
+          font-size: 4.5rem;
         }
       }
     }

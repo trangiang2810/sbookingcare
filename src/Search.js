@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./styles/styles.scss";
 import cx from "classnames";
-import { BiSearch, BiLoaderAlt } from "react-icons/bi";
+import { debounce } from "lodash";
+import { BiSearch, BiLoaderAlt, BiError } from "react-icons/bi";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,6 +14,7 @@ const Home = () => {
   const [isError, setIsError] = useState(false);
   const containerRef = useRef(null);
   const blurTimeoutRef = useRef(null);
+  const listRef = useRef(null);
 
   useEffect(() => {
     if (searchTerm.trim() !== "") {
@@ -51,7 +53,7 @@ const Home = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `https://www.googleapis.com/customsearch/v1?key=AIzaSyA6B7dmBxibNzgfNcO7Qumb8KrzcEH9O5U&cx=12526291779674938&cx=12526291779674938&q=${searchTerm}&start=${startIndex}`
+        `https://www.googleapis.com/customsearch/v1?key=AIzaSyBYgiNnTTpufnuiT5S6xGVkLfK_h56b3PQ&cx=12526291779674938&q=${searchTerm}&start=${startIndex}`
       );
 
       const data = response.data;
@@ -68,6 +70,9 @@ const Home = () => {
       setIsLoading(false);
     }
   };
+  const debouncedFetchSearchResults = useRef(
+    debounce(fetchSearchResults, 500)
+  ).current;
 
   const handleObserver = (entities) => {
     const target = entities[0];
@@ -75,8 +80,11 @@ const Home = () => {
       setStartIndex((prevStartIndex) => prevStartIndex + 20);
     }
   };
-
-  const handleBlur = () => {
+  console.log(searchResults);
+  const handleBlur = (event) => {
+    if (event.currentTarget === listRef.current) {
+      return;
+    }
     blurTimeoutRef.current = setTimeout(() => {
       setIsOpen(false);
     }, 200);
@@ -89,28 +97,27 @@ const Home = () => {
   const handleClickResult = () => {
     clearTimeout(blurTimeoutRef.current);
   };
-
   return (
     <div className="container">
       <div className="form">
-        <div className="title">
-          <h1>Tìm kiếm</h1>
-        </div>
         <div className="searchInput">
           <BiSearch className="iconSearch" />
           <input
             onBlur={handleBlur}
             onFocus={handleFocus}
             onClick={() => setIsOpen(true)}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+              debouncedFetchSearchResults();
+            }}
             type="text"
-            placeholder="search"
+            placeholder="Tìm kiếm"
           />
         </div>
 
         <ul
           className={cx("wrap", isOpen ? "active" : "")}
-          ref={containerRef}
+          ref={listRef}
           onClick={handleClickResult}
         >
           {searchResults.map((result, index) => (
@@ -135,8 +142,13 @@ const Home = () => {
         {isLoading && <BiLoaderAlt className="loading" />}
         {isError && (
           <p className="errorMessage">
-            Hiện đang vượt quá giới hạn cho phép của Google Custom Search API.
-            Vui lòng đợi trước khi thực hiện tìm kiếm bổ sung.
+            <span>
+              <BiError className="iconErr" />
+            </span>
+            <span>
+              Hiện đang vượt quá giới hạn cho phép của Google Custom Search API.
+              Vui lòng đợi trước khi thực hiện tìm kiếm bổ sung.
+            </span>
           </p>
         )}
       </div>
