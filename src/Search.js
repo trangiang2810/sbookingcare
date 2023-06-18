@@ -53,7 +53,7 @@ const Home = () => {
     try {
       setIsLoading(true);
       const response = await axios.get(
-        `https://www.googleapis.com/customsearch/v1?key=AIzaSyDtxvlPgt21PU4h5b8ssVJNu3mshcvFdfA&cx=12526291779674938&q=${searchTerm}&start=${startIndex}`
+        `https://www.googleapis.com/customsearch/v1?key=AIzaSyD45qnWUfTLBjhjDZg8ftNAUVuuLuUVvuA&cx=12526291779674938&q=${searchTerm}&start=${startIndex}`
       );
 
       const data = response.data;
@@ -80,7 +80,7 @@ const Home = () => {
       setStartIndex((prevStartIndex) => prevStartIndex + 20);
     }
   };
-  console.log(searchResults);
+
   const handleBlur = (event) => {
     if (event.currentTarget === listRef.current) {
       return;

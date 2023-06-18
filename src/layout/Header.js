@@ -8,7 +8,7 @@ const Header = () => {
         <div className="left">
           <BsList className="iconList" />
           <a href="/">
-            <img src="logo2.png" alt="logo" />
+            <img src="logo.ico" alt="logo" />
           </a>
         </div>
         <div className="right">
