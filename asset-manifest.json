@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sbookingcare/static/css/main.58c6d250.css",
-    "main.js": "/sbookingcare/static/js/main.45f85c6d.js",
+    "main.css": "/sbookingcare/static/css/main.e80ae340.css",
+    "main.js": "/sbookingcare/static/js/main.d18bb0f8.js",
     "index.html": "/sbookingcare/index.html",
-    "main.58c6d250.css.map": "/sbookingcare/static/css/main.58c6d250.css.map",
-    "main.45f85c6d.js.map": "/sbookingcare/static/js/main.45f85c6d.js.map"
+    "main.e80ae340.css.map": "/sbookingcare/static/css/main.e80ae340.css.map",
+    "main.d18bb0f8.js.map": "/sbookingcare/static/js/main.d18bb0f8.js.map"
   },
   "entrypoints": [
-    "static/css/main.58c6d250.css",
-    "static/js/main.45f85c6d.js"
+    "static/css/main.e80ae340.css",
+    "static/js/main.d18bb0f8.js"
   ]
 }
