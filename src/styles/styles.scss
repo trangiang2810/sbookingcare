@@ -1,0 +1,239 @@
+@import "./mixin";
+
+.container {
+  justify-content: center;
+  display: flex;
+  .form {
+    margin: 8rem 0 3%;
+    width: 60%;
+    max-width: 90rem;
+
+    @include screen_xxl {
+    }
+
+    @include screen_md {
+      width: 85%;
+    }
+    @include screen_sm {
+      width: 100%;
+      margin: 7rem 0 3%;
+    }
+    @include screen_xs {
+      margin: 9rem 0 3%;
+    }
+
+    .title {
+      display: flex;
+      justify-content: center;
+      h1 {
+        font-weight: 600;
+        font-size: 3rem;
+        color: #072144;
+      }
+    }
+    .searchInput {
+      margin: 1rem;
+      border-radius: 25px;
+      background: #f7d800;
+      border: none;
+      outline: none;
+      height: 5rem;
+      padding: 2rem;
+      align-items: center;
+      display: flex;
+      gap: 3%;
+      font-size: 2rem;
+      .iconSearch {
+        font-size: 2.2rem;
+      }
+      input {
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 2rem;
+        width: 100%;
+        margin-right: 1rem;
+      }
+    }
+    .wrap {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      display: none;
+      width: 100%;
+      margin-top: 1rem;
+      border: 1px solid rgb(206, 205, 205);
+      max-height: 60vh;
+      overflow-y: scroll;
+      z-index: 999;
+      @include screen_sm {
+        border-radius: 0;
+      }
+      .item {
+        border-bottom: 1px solid rgb(221, 218, 218);
+        min-height: 10rem;
+        padding: 1.5% 2%;
+        a {
+          display: flex;
+          align-items: center;
+          gap: 2%;
+          img {
+            object-fit: cover;
+            width: 15%;
+            height: auto;
+            /* height: 50px; */
+          }
+          .content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            h3 {
+              font-size: 16px;
+              font-weight: 600;
+            }
+            p {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+    .loading {
+      font-size: 1.8rem;
+      animation: ld 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    }
+    @keyframes ld {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .errorMessage {
+      font-size: 1.6rem;
+      color: rgb(176, 1, 1);
+      padding: 0.5rem 2rem;
+    }
+  }
+}
+
+.active {
+  display: block !important;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  justify-content: center;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  padding: 0.5rem 0;
+  background: #fff;
+  .container {
+    display: flex;
+    width: 117rem;
+    padding: 0 2rem;
+    justify-content: space-between;
+    @include screen_md {
+      padding: 0 1rem;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+
+      @include screen_xs {
+        flex-direction: column;
+        align-items: start;
+      }
+      .iconList {
+        font-size: 2.5rem;
+        color: gray;
+      }
+
+      img {
+        height: 3.2rem;
+      }
+    }
+    .right {
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+
+      :first-child {
+        display: flex;
+        justify-content: right;
+        :first-child {
+          background: #45c3d2;
+          width: 1.6rem;
+          height: 1.6rem;
+          border-radius: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 800;
+          color: #fff;
+          font-size: 1.2rem;
+        }
+        p {
+          color: #969495;
+          font-weight: 500;
+          font-size: 1.3rem;
+        }
+      }
+      :last-child {
+        color: #45c3d2;
+        font-weight: 500;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+footer {
+  z-index: -1;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+  background: #64b9e5;
+  color: #fff;
+  padding: 1.3rem;
+  justify-content: center;
+  display: flex;
+  .container {
+    padding: 1rem;
+    margin: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    width: 117rem;
+    @include screen_md {
+      margin: 0;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    .item {
+      display: flex;
+      gap: 1rem;
+      .icon {
+        background-color: #fff;
+        width: 3.2rem;
+        display: flex;
+        height: 3.1rem;
+        align-items: center;
+        border-radius: 5px;
+        .iconfb {
+          color: rgb(60, 87, 158);
+          font-size: 5rem;
+        }
+        .iconyt {
+          color: rgb(204, 25, 30);
+          font-size: 5rem;
+        }
+      }
+    }
+  }
+}
