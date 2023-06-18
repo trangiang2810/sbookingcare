@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sbookingcare/static/css/main.58c6d250.css",
+    "main.js": "/sbookingcare/static/js/main.45f85c6d.js",
+    "index.html": "/sbookingcare/index.html",
+    "main.58c6d250.css.map": "/sbookingcare/static/css/main.58c6d250.css.map",
+    "main.45f85c6d.js.map": "/sbookingcare/static/js/main.45f85c6d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58c6d250.css",
+    "static/js/main.45f85c6d.js"
+  ]
+}
